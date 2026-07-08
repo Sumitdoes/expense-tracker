@@ -26,3 +26,7 @@ python main.py
 ## Built With
 - Python 3.14
 - `json` for storage (no external dependencies yet)
+
+##Added category validation
+- This time program asks user to type the category given in a list
+- e.g if user types gamez instead og games program tells the usser to pick category grom the above given list
