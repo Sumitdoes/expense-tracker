@@ -1,5 +1,3 @@
-# Here is the full code for my expense tracker.
-
 import json
 import os
 
@@ -42,6 +40,16 @@ def summary_expenses(expenses):
     print("Spending By Category:", category_totals)
 
 
+CATEGORIES = ["food", "travel", "games", "bills", "shopping", "other"]
+
+def get_category():
+    while True:
+        cat = input(f"Category{CATEGORIES}:").strip().lower()
+        if cat in CATEGORIES:
+            return cat.capitalize()
+        
+        print("Pick from the above categories list ")
+            
 expenses = load_expenses()
 
 while True:
@@ -52,10 +60,7 @@ while True:
         print("Item name can't be empty.")
         continue
 
-    category = input("Category: ").strip()
-    if not category:
-        print("Category can't be empty.")
-        continue
+    category = get_category()
 
     amount_value = get_amount()
     if amount_value is None:
