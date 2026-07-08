@@ -18,7 +18,7 @@ A command-line tool to log, categorize, and analyze personal spending — built 
 
 ## How to Run
 ```bash
-git clone https://github.com/yourusername/expense-tracker.git
+git clone https://github.com/Sumitdoes/expense-tracker.git
 cd expense-tracker
 python main.py
 ```
