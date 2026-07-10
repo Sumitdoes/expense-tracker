@@ -30,3 +30,13 @@ python main.py
 ##Added category validation
 - This time program asks user to type the category given in a list
 - e.g if user types gamez instead og games program tells the usser to pick category grom the above given list
+
+## As a final step i added menu optons
+- Now user can simply type 1,2,3,4 and can choose what do do
+- Like add expenses , view , category summary , Exit to sell allover total amount
+
+  # Major problems I faced during making this are:
+  - Indentation I need to check for every wrong or misplaced indentatiins under funtions and loops
+  - Making run functions inside a loop that is wrong but I learnt it
+  - After completing code or making small changes I faced these issues
+  - Not looking into these issues while coding makes harder to debug      
