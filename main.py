@@ -50,30 +50,52 @@ def get_category():
         
         print("Pick from the above categories list ")
             
-expenses = load_expenses()
+def view_all(expenses):
+    if not expenses:
+        print("No expenses yet.")
+        return
+    for i, e in enumerate(expenses,1):
+        print(f"{i}. {e['item']} | {e['category']} | {e['amount']:.2f}")
 
-while True:
-    what = input("\nWhat did you spend on? (type 'done' to finish): ").strip()
-    if what.lower() == "done":
-        break
+
+
+def add_expenses(expenses):
+    what = input("What did you spend on: ").strip()
     if not what:
-        print("Item name can't be empty.")
-        continue
-
+        print("Item can't be empty.")
+        return
+    
     category = get_category()
 
     amount_value = get_amount()
+
     if amount_value is None:
         print("Entry cancelled.")
-        continue
+        return
+    
+    if amount_value > 10000:
+        print("Suggestion: Save upto 20%")
 
-    expenses.append({"item": what, "category": category, "amount": amount_value})
-    save_expenses(expenses)  # save after each add so you don't lose data on crash
+    expenses.append({"item": what , "category": category , "amount": amount_value})
+    save_expenses(expenses)
+    print("Expenses saved.")
+    
+expenses = load_expenses()
 
-total = sum(e["amount"] for e in expenses)
-print(f"\nTotal spent so far: {total:.2f}")
+while True:
+    print("\n1) Add expenses 2) View all 3) Category summary 4) Exit ")
 
-if total > 10000:
-    print("Suggestion: Save up to 20%")
+    choice = input("> ").strip()
 
-summary_expenses(expenses)
+    if choice == "1":
+        add_expenses(expenses)
+    elif choice == "2":
+        view_all(expenses)
+    elif choice == "3":
+        summary_expenses(expenses)
+    elif choice == "4":
+        total = sum(e["amount"] for e in expenses)
+        print(f"\nTotal spent: {total:.2f}")
+        break
+    else:
+        print("Pick 1,2,3,4.")
